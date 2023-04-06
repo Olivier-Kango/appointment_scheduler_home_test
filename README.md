@@ -1,288 +1,109 @@
-<a name="readme-top"></a>
-
-<!--
-HOW TO USE:
-This is an example of how you may give instructions on setting up your project locally.
-
-Modify this file to match your project and remove sections that don't apply.
+##### by Chris Dritsas
+# Appointment Scheduler
 
-REQUIRED SECTIONS:
-- Table of Contents
-- About the Project
-  - Built With
-  - Live Demo
-- Getting Started
-- Authors
-- Future Features
-- Contributing
-- Show your support
-- Acknowledgements
-- License
+### Overview
 
-OPTIONAL SECTIONS:
-- FAQ
+This was a take-home interview project for a company. It was **timboxed to 4 hours**.
+I have since extended it. 
 
-After you're finished please remove all the comments and instructions!
--->
+* **Ask:**
 
-<div align="center">
-  <!-- You are encouraged to replace this logo with your own! Otherwise you can also remove it. -->
-  <img src="murple_logo.png" alt="logo" width="140"  height="auto" />
-  <br/>
+     * _"Prototype a web application for scheduling an appointment"_
 
-  <h3><b>Microverse README Template</b></h3>
+* **Input:**
 
-</div>
+   *  _"Given a [CSV dataset](./lib/tasks/coaches.csv) that contains the active coaches and their 
+     weekly schedule of their available hours, Output the following
+     User Stories:"_
+         
+* **Output:**
+        
+    * _As a User, I want to see which coaches I can schedule with._
+    
+    * _As a User, I want to see what 30 minute timeslots are available to schedule with a particular coach._
+    
+    * _As a User, I want to book an appointment with a coach at one of their available times._
+               
+* **Anit-Requirements:**
 
-<!-- TABLE OF CONTENTS -->
+     * _You can't do it all. We respect your time, and expect that you will have to make 
+        choices and tradeoffs for what is in scope for your deliverable._
+     
+     * _Don't worry about authentication. Assume a non-authenticated experience to keep things simple._
+     
+     * _Pick your stack. Choose any libraries that help you produce the highest quality work in the time available._
+    
 
-# 📗 Table of Contents
+### Stack
 
-- [📖 About the Project](#about-project)
-  - [🛠 Built With](#built-with)
-    - [Tech Stack](#tech-stack)
-    - [Key Features](#key-features)
-  - [🚀 Live Demo](#live-demo)
-- [💻 Getting Started](#getting-started)
-  - [Setup](#setup)
-  - [Prerequisites](#prerequisites)
-  - [Install](#install)
-  - [Usage](#usage)
-  - [Run tests](#run-tests)
-  - [Deployment](#deployment)
-- [👥 Authors](#authors)
-- [🔭 Future Features](#future-features)
-- [🤝 Contributing](#contributing)
-- [⭐️ Show your support](#support)
-- [🙏 Acknowledgements](#acknowledgements)
-- [❓ FAQ (OPTIONAL)](#faq)
-- [📝 License](#license)
+* [Ruby 2.6.3](https://github.com/ChrisDrit/appointment-scheduler/blob/master/Gemfile#L6) (Upgraded from [Ruby 2.5.0](https://github.com/ChrisDrit/appointment-scheduler/pull/8))
+* [Rails 6.0.0](https://github.com/ChrisDrit/appointment-scheduler/blob/master/Gemfile#L9) (Upgraded from [Rails 5.2.1](https://github.com/ChrisDrit/appointment-scheduler/pull/9))
+* [Bootstrap](https://github.com/ChrisDrit/appointment-scheduler/blob/master/app/views/layouts/application.html.erb#L10) for Responsive layouts (mobile first!)
 
-<!-- PROJECT DESCRIPTION -->
+### Heroku
 
-# 📖 [your_project_name] <a name="about-project"></a>
+* [Rails Appointment Scheduler](https://rails-appointment-scheduler.herokuapp.com/)
+* This is on a free `Hobby` tier so your millage may very.
 
-> Describe your project in 1 or 2 sentences.
+### Pull Requests
 
-**[your_project__name]** is a...
+I've setup this up, and am developing as I would in a normal Dev environment with other engineers. 
 
-## 🛠 Built With <a name="built-with"></a>
+This is a public repo (open source) so feel free to push a new branch and create
+a Pull Request for me with any questions!
 
-### Tech Stack <a name="tech-stack"></a>
+* I have been pushing branches and creating [PR's on Github](https://github.com/ChrisDrit/appointment-scheduler/pulls?q=is%3Apr+is%3Aclosed) (ready for code review):
 
-> Describe the tech stack and include only the relevant sections that apply to your project.
+    ![alt text](./public/list-of-pull-requests.png "Pull Request List")
 
-<details>
-  <summary>Client</summary>
-  <ul>
-    <li><a href="https://reactjs.org/">React.js</a></li>
-  </ul>
-</details>
+* I have added a couple helpful integrations - CodeClime (Rubocop) and CircleCI (Rspec's):
 
-<details>
-  <summary>Server</summary>
-  <ul>
-    <li><a href="https://expressjs.com/">Express.js</a></li>
-  </ul>
-</details>
+    ![alt text](./public/pull-request-checks.png "Pull Request Integrations")
 
-<details>
-<summary>Database</summary>
-  <ul>
-    <li><a href="https://www.postgresql.org/">PostgreSQL</a></li>
-  </ul>
-</details>
+* Making use of inline Todo comments while working through the feature to show progress:
 
-<!-- Features -->
+    ![alt text](./public/pull-request-comments.png "Pull Request Comments")
 
-### Key Features <a name="key-features"></a>
 
-> Describe between 1-3 key features of the application.
+* Rebasing my git commits (`git rebase -i origin/master`) for better clairity in the Git logs:
 
-- **[key_feature_1]**
-- **[key_feature_2]**
-- **[key_feature_3]**
+    ![alt text](./public/git-rebase-squash-commits.png "Git Rebase")
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- LIVE DEMO -->
+### Local Setup
 
-## 🚀 Live Demo <a name="live-demo"></a>
+* `bundle install`
+* `bundle exec rails db:setup`
+* `bundle exec rails import:all_data:from_csv`
 
-> Add a link to your deployed project.
+### Run RSpec's
 
-- [Live Demo Link](https://google.com)
+* `bundle exec rspec`
+* `bundle exec rspec -f d --tag ~skip` (to skip pending tests)
+     
+    ![alt text](./public/local-rspec-output.png "Pull Request Comments")
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- GETTING STARTED -->
+### Run Rubcop
 
-## 💻 Getting Started <a name="getting-started"></a>
+* `bundle exec rubocop`
 
-> Describe how a new developer could make use of your project.
+### Run App Locally
 
-To get a local copy up and running, follow these steps.
+* `bundle exec rails s`
+* `http://localhost:3000/`
 
-### Prerequisites
+### App Screenshots
 
-In order to run this project you need:
+* **Mobile Ready (Responsive)**
 
-<!--
-Example command:
+    ![alt text](./public/mobile-create-account.png "Responsive!")
 
-```sh
- gem install rails
-```
- -->
 
-### Setup
+* **Schedule a coaches time**
 
-Clone this repository to your desired folder:
+ ![alt text](./public/desktop-coach-time-slots.png "Responsive!")
 
-<!--
-Example commands:
+---
 
-```sh
-  cd my-folder
-  git clone git@github.com:myaccount/my-project.git
-```
---->
 
-### Install
-
-Install this project with:
-
-<!--
-Example command:
-
-```sh
-  cd my-project
-  gem install
-```
---->
-
-### Usage
-
-To run the project, execute the following command:
-
-<!--
-Example command:
-
-```sh
-  rails server
-```
---->
-
-### Run tests
-
-To run tests, run the following command:
-
-<!--
-Example command:
-
-```sh
-  bin/rails test test/models/article_test.rb
-```
---->
-
-### Deployment
-
-You can deploy this project using:
-
-<!--
-Example:
-
-```sh
-
-```
- -->
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- AUTHORS -->
-
-## 👥 Authors <a name="authors"></a>
-
-> Mention all of the collaborators of this project.
-
-👤 **Author1**
-
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
-
-👤 **Author2**
-
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- FUTURE FEATURES -->
-
-## 🔭 Future Features <a name="future-features"></a>
-
-> Describe 1 - 3 features you will add to the project.
-
-- [ ] **[new_feature_1]**
-- [ ] **[new_feature_2]**
-- [ ] **[new_feature_3]**
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- CONTRIBUTING -->
-
-## 🤝 Contributing <a name="contributing"></a>
-
-Contributions, issues, and feature requests are welcome!
-
-Feel free to check the [issues page](../../issues/).
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- SUPPORT -->
-
-## ⭐️ Show your support <a name="support"></a>
-
-> Write a message to encourage readers to support your project
-
-If you like this project...
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- ACKNOWLEDGEMENTS -->
-
-## 🙏 Acknowledgments <a name="acknowledgements"></a>
-
-> Give credit to everyone who inspired your codebase.
-
-I would like to thank...
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- FAQ (optional) -->
-
-## ❓ FAQ (OPTIONAL) <a name="faq"></a>
-
-> Add at least 2 questions new developers would ask when they decide to use your project.
-
-- **[Question_1]**
-
-  - [Answer_1]
-
-- **[Question_2]**
-
-  - [Answer_2]
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- LICENSE -->
-
-## 📝 License <a name="license"></a>
-
-This project is [MIT](./LICENSE) licensed.
-
-_NOTE: we recommend using the [MIT license](https://choosealicense.com/licenses/mit/) - you can set it up quickly by [using templates available on GitHub](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/adding-a-license-to-a-repository). You can also use [any other license](https://choosealicense.com/licenses/) if you wish._
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
